@@ -63,7 +63,7 @@ namespace RealEstate_Dapper_Api.Repositories.BottomGridRepository
 
         public async Task<GetByIDBottomGridDto> GetBottomGridAsync(int id)
         {
-            string query = "Select * from BottomGrid where BottomGridID = @bottomGirdID";
+            string query = "Select * from BottomGrid where BottomGridID = @bottomGridID";
             var parameters = new DynamicParameters();
             parameters.Add("@bottomGridID", id);
 
