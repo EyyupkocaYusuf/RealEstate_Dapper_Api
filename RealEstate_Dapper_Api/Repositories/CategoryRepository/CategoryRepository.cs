@@ -1,5 +1,5 @@
 ﻿using Dapper;
-using RealEstate_Dapper_Api.Dtos.CategortDtos;
+using RealEstate_Dapper_Api.Dtos.CategoryDtos;
 using RealEstate_Dapper_Api.Models.DapperContext;
 
 namespace RealEstate_Dapper_Api.Repositories.CategoryRepository
@@ -37,18 +37,6 @@ namespace RealEstate_Dapper_Api.Repositories.CategoryRepository
             }
         }
 
-        public async void DeleteCategory(int id)
-        {
-            string query = "Delete From Category Where CategoryID = @categoryID";
-            var parameters = new DynamicParameters();
-            parameters.Add("@categoryID", id);
-            using (var connection = _context.CreateConnection())
-            {
-                await connection.ExecuteAsync(query, parameters);
-            }
-
-        }
-
         public async void UpdateCategory(UpdateCategoryDto categoryDto)
         {
             string query = "Update Category Set CategoryName=@categoryName,CategoryStatus=@categoryStatus where CategoryID=@categoryID";
@@ -62,6 +50,18 @@ namespace RealEstate_Dapper_Api.Repositories.CategoryRepository
                 await connection.ExecuteAsync(query, parameters);
 
             }
+        }
+
+        public async void DeleteCategory(int id)
+        {
+            string query = "Delete From Category Where CategoryID = @categoryID";
+            var parameters = new DynamicParameters();
+            parameters.Add("@categoryID", id);
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parameters);
+            }
+
         }
 
         public async Task<GetByIDCategoryDto> GetCategory(int id)
