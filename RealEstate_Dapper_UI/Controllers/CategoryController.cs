@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RealEstate_Dapper_UI.Dtos.CategoryDtos;
+using System.Text;
 
 namespace RealEstate_Dapper_UI.Controllers
 {
@@ -21,8 +22,30 @@ namespace RealEstate_Dapper_UI.Controllers
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData);
+                var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData); // GetAll yada GetById islemerinde DeserializeObject kullanılır.
                 return View(values);
+            }
+
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult CreateCategory()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateCategory(CreateCategoryDto createCategoryDto)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(createCategoryDto); // Create ve Update işlemerinde SerializeObject kullanılır.
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responseMessage = await client.PostAsync("https://localhost:7243/api/Categories", stringContent);
+
+            if(responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
             }
 
             return View();
