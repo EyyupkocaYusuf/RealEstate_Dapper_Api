@@ -28,13 +28,20 @@
                                 <th scope="row">@item.CategoryID</th>
                                 <td>@item.CategoryName</td>
                                 <td>@item.CategoryStatus</td>
-                                <td><a href="#" class="btn btn-outline-danger">Sil</a></td>
+                                    @* <td><a href="DeleteCategory/@item.CategoryID" class="btn btn-outline-danger">Sil</a></td> *@
+                                <td> 
+                                        @using (Html.BeginForm("DeleteCategory", "Category", new { id = item.CategoryID }, FormMethod.Post))
+                                        {
+                                            Html.AntiForgeryToken();
+                                            <input class="btn btn-outline-danger" type="submit" value="Delete" />
+                                        }
+                                    </td>
                                 <td><a href="#" class="btn btn-outline-success">Güncelle</a></td>
                             </tr>
                             }
                         </tbody>
                     </table>
-                    <td><a href="CreateCategory" class="btn btn-outline-info">Yeni Kategori Girişi</a></td>
+                    <td><a href="Category/CreateCategory" class="btn btn-outline-info">Yeni Kategori Girişi</a></td>
                 </div>
             </div>
         </div>
