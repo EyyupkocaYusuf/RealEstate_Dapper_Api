@@ -2,7 +2,7 @@
 {
     public class UpdateEmployeeDto
     {
-        public int Id { get; set; }
+        public int EmployeeID { get; set; }
         public string Name { get; set; }
         public string Title { get; set; }
         public string Mail { get; set; }

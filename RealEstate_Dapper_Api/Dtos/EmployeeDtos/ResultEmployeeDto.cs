@@ -1,8 +1,11 @@
-﻿namespace RealEstate_Dapper_Api.Dtos.EmployeeDtos
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace RealEstate_Dapper_Api.Dtos.EmployeeDtos
 {
     public class ResultEmployeeDto
     {
-        public int Id { get; set; }
+   
+        public int EmployeeID { get; set; }
         public string Name { get; set; }
         public string Title { get; set; }
         public string Mail { get; set; }
