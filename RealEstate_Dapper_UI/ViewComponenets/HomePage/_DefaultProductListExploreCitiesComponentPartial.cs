@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RealEstate_Dapper_UI.Dtos.PopularLocationDtos;
-using RealEstate_Dapper_UI.Dtos.ProductDtos;
 
 namespace RealEstate_Dapper_UI.ViewComponenets.HomePage
 {
-    public class _DefaultProductListExploreCitiesComponentPartial:ViewComponent
+    public class _DefaultProductListExploreCitiesComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
@@ -19,7 +18,7 @@ namespace RealEstate_Dapper_UI.ViewComponenets.HomePage
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:7243/api/PopularLocation");
 
-            if(responseMessage.IsSuccessStatusCode)
+            if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultPopularLocationDto>>(jsonData);

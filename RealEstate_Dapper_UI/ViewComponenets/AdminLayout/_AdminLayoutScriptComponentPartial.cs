@@ -2,7 +2,7 @@
 
 namespace RealEstate_Dapper_UI.ViewComponenets.AdminLayout
 {
-    public class _AdminLayoutScriptComponentPartial:ViewComponent
+    public class _AdminLayoutScriptComponentPartial : ViewComponent
     {
         public IViewComponentResult Invoke()
         {

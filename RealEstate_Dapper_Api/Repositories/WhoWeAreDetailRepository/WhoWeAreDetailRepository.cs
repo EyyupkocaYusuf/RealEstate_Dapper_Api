@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using RealEstate_Dapper_Api.Dtos.CategoryDtos;
 using RealEstate_Dapper_Api.Dtos.WhoWeAreDetailDtos;
 using RealEstate_Dapper_Api.Models.DapperContext;
 
@@ -67,7 +66,7 @@ namespace RealEstate_Dapper_Api.Repositories.WhoWeAreRepository
                 await connection.ExecuteAsync(query, parameters);
             }
         }
-     
+
         public async Task<GetByIDWhoWeAreDetailDto> GetWhoWeAreDetail(int id)
         {
             string query = "Select * From WhoWeAreDetail Where WhoWeAreDetailID = @whoWeAreDetailID";

@@ -21,7 +21,7 @@ namespace RealEstate_Dapper_Api.Repositories.TestimonialRepository
                 var values = await connection.QueryAsync<ResultTestimonialDto>(query);
                 return values.ToList();
             }
-            
+
         }
     }
 }

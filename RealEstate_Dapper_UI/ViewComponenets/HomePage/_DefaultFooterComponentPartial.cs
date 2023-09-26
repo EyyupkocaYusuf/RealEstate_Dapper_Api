@@ -2,7 +2,7 @@
 
 namespace RealEstate_Dapper_UI.ViewComponenets.HomePage
 {
-    public class _DefaultFooterComponentPartial:ViewComponent
+    public class _DefaultFooterComponentPartial : ViewComponent
     {
         public IViewComponentResult Invoke()
         {

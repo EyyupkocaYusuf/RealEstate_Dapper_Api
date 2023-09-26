@@ -29,7 +29,7 @@ namespace RealEstate_Dapper_Api.Repositories.BottomGridRepository
             parameters.Add("@icon", bottomGridDto.Icon);
             parameters.Add("@title", bottomGridDto.Title);
             parameters.Add("@description", bottomGridDto.Description);
-            
+
             using (var connection = _context.CreateConnection())
             {
                 await connection.ExecuteAsync(query, parameters);
@@ -40,13 +40,13 @@ namespace RealEstate_Dapper_Api.Repositories.BottomGridRepository
         {
             string query = "Update BottomGrid Set Icon=@icon,Title=@title,Description=@description where BottomGirdID=@bottomGridId";
             var parameters = new DynamicParameters();
-            parameters.Add("@icon",bottomGridDto.Icon);
+            parameters.Add("@icon", bottomGridDto.Icon);
             parameters.Add("@title", bottomGridDto.Title);
             parameters.Add("@description", bottomGridDto.Description);
 
             using (var connection = _context.CreateConnection())
             {
-                await connection.ExecuteAsync(query,parameters);
+                await connection.ExecuteAsync(query, parameters);
             }
         }
         public async void DeleteBottomGridAsync(int id)
@@ -69,7 +69,7 @@ namespace RealEstate_Dapper_Api.Repositories.BottomGridRepository
 
             using (var connection = _context.CreateConnection())
             {
-                var value = await connection.QueryFirstOrDefaultAsync<GetByIDBottomGridDto>(query,parameters);
+                var value = await connection.QueryFirstOrDefaultAsync<GetByIDBottomGridDto>(query, parameters);
                 return value;
             }
         }

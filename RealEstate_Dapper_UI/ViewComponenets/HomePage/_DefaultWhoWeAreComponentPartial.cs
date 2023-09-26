@@ -4,7 +4,7 @@ using RealEstate_Dapper_UI.Dtos.WhoWeAreDetailDtos;
 
 namespace RealEstate_Dapper_UI.ViewComponenets.HomePage
 {
-    public class _DefaultWhoWeAreComponentPartial:ViewComponent
+    public class _DefaultWhoWeAreComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
 

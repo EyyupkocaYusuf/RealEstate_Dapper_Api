@@ -32,10 +32,9 @@ namespace RealEstate_Dapper_Api.Repositories.CategoryRepository
 
             using (var connection = _context.CreateConnection())
             {
-               await connection.ExecuteAsync(query, parameters);
-          
+                await connection.ExecuteAsync(query, parameters);
             }
-        }
+        }   
 
         public async void UpdateCategory(UpdateCategoryDto categoryDto)
         {

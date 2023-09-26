@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using RealEstate_Dapper_Api.Dtos.BottomGridDtos;
 using RealEstate_Dapper_Api.Repositories.BottomGridRepository;
 
@@ -26,7 +25,7 @@ namespace RealEstate_Dapper_Api.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateBottomGrid(CreateBottomGridDto createBottomGridDto)
         {
-             _bottomGridRepository.CreateBottomGridAsync(createBottomGridDto);
+            _bottomGridRepository.CreateBottomGridAsync(createBottomGridDto);
             return Ok("Eklendi");
         }
 

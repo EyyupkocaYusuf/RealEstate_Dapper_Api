@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using RealEstate_Dapper_Api.Dtos.CategoryDtos;
 using RealEstate_Dapper_Api.Repositories.CategoryRepository;
 
@@ -40,7 +39,7 @@ namespace RealEstate_Dapper_Api.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateCategory(UpdateCategoryDto updateCategoryDto)
         {
-             _categoryRepository.UpdateCategory(updateCategoryDto);
+            _categoryRepository.UpdateCategory(updateCategoryDto);
             return Ok("Kategori Güncellendi");
         }
 

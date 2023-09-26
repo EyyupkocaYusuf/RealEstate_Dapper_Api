@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using RealEstate_Dapper_Api.Dtos.CategoryDtos;
 using RealEstate_Dapper_Api.Dtos.ServiceDtos;
 using RealEstate_Dapper_Api.Models.DapperContext;
 
@@ -20,7 +19,7 @@ namespace RealEstate_Dapper_Api.Repositories.ServiceRepository
             string query = "Select * from Service";
             using (var connection = _context.CreateConnection())
             {
-                var values = await connection.QueryAsync<ResultServiceDto>(query);  
+                var values = await connection.QueryAsync<ResultServiceDto>(query);
                 return values.ToList();
             }
         }
@@ -33,7 +32,7 @@ namespace RealEstate_Dapper_Api.Repositories.ServiceRepository
 
             using (var connection = _context.CreateConnection())
             {
-               await connection.ExecuteAsync(query,parameters);
+                await connection.ExecuteAsync(query, parameters);
             }
         }
 

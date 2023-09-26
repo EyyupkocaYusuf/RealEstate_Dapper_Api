@@ -40,13 +40,13 @@ namespace RealEstate_Dapper_Api.Repositories.PopularLocationRepository
         {
             var query = "Update PopularLocation Set ImageUrl=@imageUrl,CityName=@cityName where PopularLocationID=@popularLocationID";
             var parameters = new DynamicParameters();
-            parameters.Add("@imageUrl",updatePopularLocationDto.ImageUrl);
-            parameters.Add("@cityName",updatePopularLocationDto.CityName);
-            parameters.Add("@popularLocationID",updatePopularLocationDto.PopularLocationID);
+            parameters.Add("@imageUrl", updatePopularLocationDto.ImageUrl);
+            parameters.Add("@cityName", updatePopularLocationDto.CityName);
+            parameters.Add("@popularLocationID", updatePopularLocationDto.PopularLocationID);
 
             using (var connection = _context.CreateConnection())
             {
-                await connection.ExecuteAsync(query,parameters);
+                await connection.ExecuteAsync(query, parameters);
             }
         }
 
@@ -70,7 +70,7 @@ namespace RealEstate_Dapper_Api.Repositories.PopularLocationRepository
 
             using (var connection = _context.CreateConnection())
             {
-                var value = await connection.QueryFirstOrDefaultAsync<GetByIDPopularLocationDto>(query,parameters);
+                var value = await connection.QueryFirstOrDefaultAsync<GetByIDPopularLocationDto>(query, parameters);
                 return value;
             }
         }

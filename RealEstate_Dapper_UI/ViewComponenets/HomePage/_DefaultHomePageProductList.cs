@@ -4,7 +4,7 @@ using RealEstate_Dapper_UI.Dtos.ProductDtos;
 
 namespace RealEstate_Dapper_UI.ViewComponenets.HomePage
 {
-    public class _DefaultHomePageProductList:ViewComponent
+    public class _DefaultHomePageProductList : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
@@ -18,7 +18,7 @@ namespace RealEstate_Dapper_UI.ViewComponenets.HomePage
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:7243/api/Products/ProductListWithCategory");
 
-            if(responseMessage.IsSuccessStatusCode)
+            if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultProductDto>>(jsonData);

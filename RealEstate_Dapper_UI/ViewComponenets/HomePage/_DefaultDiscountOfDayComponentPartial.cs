@@ -2,7 +2,7 @@
 
 namespace RealEstate_Dapper_UI.ViewComponenets.HomePage
 {
-    public class _DefaultDiscountOfDayComponentPartial:ViewComponent
+    public class _DefaultDiscountOfDayComponentPartial : ViewComponent
     {
         public IViewComponentResult Invoke()
         {

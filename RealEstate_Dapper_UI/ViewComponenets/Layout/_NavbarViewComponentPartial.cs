@@ -2,7 +2,7 @@
 
 namespace RealEstate_Dapper_UI.ViewComponenets.Layout
 {
-    public class _NavbarViewComponentPartial:ViewComponent
+    public class _NavbarViewComponentPartial : ViewComponent
     {
         public IViewComponentResult Invoke()
         {
