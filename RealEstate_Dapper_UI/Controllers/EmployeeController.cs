@@ -45,5 +45,45 @@ namespace RealEstate_Dapper_UI.Controllers
             }
             return View();
         }
+
+        [HttpGet]
+        public async Task<IActionResult> UpdateEmployee(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync($"https://localhost:7243/api/Employees/{id}");
+            if( responseMessage.IsSuccessStatusCode )
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var value = JsonConvert.DeserializeObject<UpdateEmployeeDto>(jsonData);
+                return View(value);
+
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateEmployee(UpdateEmployeeDto updateEmployeeDto)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(updateEmployeeDto);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responseMessage = await client.PutAsync("https://localhost:7243/api/Employees/", stringContent);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+        public async Task<IActionResult> DeleteEmployee(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.DeleteAsync($"https://localhost:7243/api/Employees/{id}");
+            if(responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction($"Index");
+            }
+            return View();
+        }
     }
 }
