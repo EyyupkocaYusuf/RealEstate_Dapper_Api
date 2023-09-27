@@ -3,7 +3,10 @@
 ###############################################################################
 * text=auto
 *.html linguist-detectable=false
-*.csharp linguist-detectable=true
+*.js linguist-detectable=false
+*.css linguist-detectable=false
+*.scss linguist-detectable=false
+
 
 
 ###############################################################################
