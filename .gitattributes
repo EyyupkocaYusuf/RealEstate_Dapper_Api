@@ -2,7 +2,8 @@
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
 * text=auto
-static/* linguist-vendored
+*.html linguist-detectable=false
+*.csharp linguist-detectable=true
 
 
 ###############################################################################
