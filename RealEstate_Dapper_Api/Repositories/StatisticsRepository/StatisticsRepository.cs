@@ -35,15 +35,25 @@ namespace RealEstate_Dapper_Api.Repositories.StatisticsRepository
 
         public int ApartmentCount()
         {
-            throw new NotImplementedException();
+            string query = "Select Count(*) From Product Where Title like '%Daire%'";  
+            using (var connections = _context.CreateConnection())
+            {
+                var values = connections.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
 
-        public decimal AverageProductByRent()
+        public decimal AverageProductPriceByRent()
         {
             throw new NotImplementedException();
         }
 
-        public decimal AverageProductBySale()
+        public decimal AverageProductPriceBySale()
+        {
+            throw new NotImplementedException();
+        }
+
+        public decimal AverageRoomCount()
         {
             throw new NotImplementedException();
         }

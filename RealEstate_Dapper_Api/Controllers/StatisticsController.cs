@@ -38,5 +38,11 @@ namespace RealEstate_Dapper_Api.Controllers
         {
             return Ok(_statisticsRepository.ProductCount());
         }
+
+        [HttpGet("ApartmentCount")]
+        public IActionResult ApartmentCount()
+        {
+            return Ok(_statisticsRepository.ApartmentCount());
+        }
     }
 }
