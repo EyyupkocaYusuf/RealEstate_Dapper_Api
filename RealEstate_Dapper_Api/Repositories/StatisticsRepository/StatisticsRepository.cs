@@ -1,4 +1,6 @@
-﻿using RealEstate_Dapper_Api.Models.DapperContext;
+﻿using Dapper;
+using RealEstate_Dapper_Api.Dtos.ServiceDtos;
+using RealEstate_Dapper_Api.Models.DapperContext;
 
 namespace RealEstate_Dapper_Api.Repositories.StatisticsRepository
 {
@@ -13,12 +15,22 @@ namespace RealEstate_Dapper_Api.Repositories.StatisticsRepository
 
         public int ActiveCategoryCount()
         {
-            throw new NotImplementedException();
+            string query = "Select Count(*) From Category Where CategoryStatus = 1";
+            using (var connections = _context.CreateConnection())
+            {
+                var values =  connections.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
 
         public int ActiveEmployeeCount()
         {
-            throw new NotImplementedException();
+            string query = "Select Count(*) From Employee Where Status = 1";
+            using (var connections = _context.CreateConnection())
+            {
+                var values = connections.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
 
         public int ApartmentCount()
@@ -78,12 +90,22 @@ namespace RealEstate_Dapper_Api.Repositories.StatisticsRepository
 
         public int PassiveCategoryCount()
         {
-            throw new NotImplementedException();
+            string query = "Select Count(*) From Category Where CategoryStatus = 0";
+            using (var connections = _context.CreateConnection())
+            {
+                var values = connections.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
 
         public int ProductCount()
         {
-            throw new NotImplementedException();
+            string query = "Select Count(*) From Product";
+            using (var connections = _context.CreateConnection())
+            {
+                var values = connections.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
     }
 }
