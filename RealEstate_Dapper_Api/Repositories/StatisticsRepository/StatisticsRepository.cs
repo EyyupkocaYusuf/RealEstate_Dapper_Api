@@ -45,12 +45,22 @@ namespace RealEstate_Dapper_Api.Repositories.StatisticsRepository
 
         public decimal AverageProductPriceByRent()
         {
-            throw new NotImplementedException();
+            string query = "Select Avg(Price) From Product Where Type = 'Kiralık'";
+            using (var connections = _context.CreateConnection())
+            {
+                var values = connections.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
 
         public decimal AverageProductPriceBySale()
         {
-            throw new NotImplementedException();
+            string query = "Select Avg(Price) From Product Where Type = 'Satılık'";
+            using (var connections = _context.CreateConnection())
+            {
+                var values = connections.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
 
         public decimal AverageRoomCount()
@@ -60,7 +70,12 @@ namespace RealEstate_Dapper_Api.Repositories.StatisticsRepository
 
         public int CategoryCount()
         {
-            throw new NotImplementedException();
+            string query = "Select Count(*) From Category ";
+            using (var connections = _context.CreateConnection())
+            {
+                var values = connections.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
 
         public string CategoryNameByMaxProductCount()
