@@ -48,7 +48,7 @@ namespace RealEstate_Dapper_Api.Repositories.StatisticsRepository
             string query = "Select Avg(Price) From Product Where Type = 'Kiralık'";
             using (var connections = _context.CreateConnection())
             {
-                var values = connections.QueryFirstOrDefault<int>(query);
+                var values = connections.QueryFirstOrDefault<decimal>(query);
                 return values;
             }
         }
@@ -58,14 +58,19 @@ namespace RealEstate_Dapper_Api.Repositories.StatisticsRepository
             string query = "Select Avg(Price) From Product Where Type = 'Satılık'";
             using (var connections = _context.CreateConnection())
             {
-                var values = connections.QueryFirstOrDefault<int>(query);
+                var values = connections.QueryFirstOrDefault<decimal>(query);
                 return values;
             }
         }
 
         public decimal AverageRoomCount()
         {
-            throw new NotImplementedException();
+            string query = "Select Avg(RoomCount) From ProductDetails ";
+            using (var connections = _context.CreateConnection())
+            {
+                var values = connections.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
 
         public int CategoryCount()
