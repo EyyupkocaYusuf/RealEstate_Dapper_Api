@@ -85,17 +85,35 @@ namespace RealEstate_Dapper_Api.Repositories.StatisticsRepository
 
         public string CategoryNameByMaxProductCount()
         {
-            throw new NotImplementedException();
+            string query = "Select Top(1) CategoryName,Count(*) From Product inner join Category " +
+                            "On Product.ProductCategory = Category.CategoryID" +
+                            "Group By CategoryName " +
+                            "order by Count(*) Desc ";
+            using (var connections = _context.CreateConnection())
+            {
+                var values = connections.QueryFirstOrDefault<string>(query);
+                return values;
+            }
         }
 
         public string CityNameByMaxProductCount()
         {
-            throw new NotImplementedException();
+            string query = "Select Top(1) City,Count(*) From Product group by City order by Count(*) Desc ";
+            using (var connections = _context.CreateConnection())
+            {
+                var values = connections.QueryFirstOrDefault<string>(query);
+                return values;
+            }
         }
 
         public int DifferentCityCount()
         {
-            throw new NotImplementedException();
+            string query = "Select Count(DISTINCT(City)) From Product";
+            using (var connections = _context.CreateConnection())
+            {
+                var values = connections.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
 
         public string EmployeeNameByMaxProductCount()
